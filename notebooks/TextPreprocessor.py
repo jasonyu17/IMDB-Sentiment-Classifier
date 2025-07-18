@@ -17,4 +17,22 @@ class TextPreprocessor:
     def clean_html(self, text):
         return BeautifulSoup(text, "html.parser").get_text()
     
+    def clean(self,text):
+        text = self.clean_html(text)
+
+        if self.lowercase:
+            text = text.lower()
+
+        if self.remove_punctuation:
+            text = re.sub(f"[{re.escape(string.punctuation)}]", " ", text)
+        
+        words = text.split()
+        if self.remove_stopwords:
+            words = [word for word in words if word not in stop_words]
+
+        return ' '.join(words)
+    
+    def process(self, texts):
+        return [self.clean(text) for text in texts]
+    
     
