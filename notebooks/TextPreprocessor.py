@@ -1,10 +1,9 @@
-#move to src later, figure out the module error
+# move to src later, figure out the module error
 import re
 import string
 from bs4 import BeautifulSoup
 import nltk
 from nltk.corpus import stopwords
-
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
@@ -17,7 +16,7 @@ class TextPreprocessor:
     def clean_html(self, text):
         return BeautifulSoup(text, "html.parser").get_text()
     
-    def clean(self,text):
+    def clean(self, text):
         text = self.clean_html(text)
 
         if self.lowercase:
@@ -32,7 +31,8 @@ class TextPreprocessor:
 
         return ' '.join(words)
     
-    def process(self, texts):
-        return [self.clean(text) for text in texts]
-    
-    
+    def process(self, texts, textcol='review', drop_original=True):
+        texts['cleaned_review'] = texts[textcol].apply(self.clean)
+        if drop_original:
+            texts.drop(columns=[textcol], inplace=True)
+        return texts
