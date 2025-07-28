@@ -2,8 +2,8 @@ import streamlit as st
 import joblib
 
 # Load the saved model and vectorizer
-model = joblib.load("../models/logistic_regression_model.joblib")
-tfidf = joblib.load("../models/tfidf_vectorizer.joblib")
+model = joblib.load("models/logistic_regression_model.joblib")
+tfidf = joblib.load("models/tfidf_vectorizer.joblib")
   
 
 
