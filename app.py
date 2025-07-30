@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 
 # Load the saved model and vectorizer
-model = joblib.load("models/logistic_regression_model.joblib")
+model = joblib.load("models/svm_model_rbf.joblib")
 tfidf = joblib.load("models/tfidf_vectorizer.joblib")
   
 
