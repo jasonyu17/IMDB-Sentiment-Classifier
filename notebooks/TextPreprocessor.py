@@ -5,7 +5,10 @@ from bs4 import BeautifulSoup
 import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords')
-stop_words = set(stopwords.words('english'))
+stop_word = set(stopwords.words('english'))
+keep_words = {"not"}
+stop_words = stop_word - keep_words
+
 
 class TextPreprocessor:
     def __init__(self, remove_stopwords=True, lowercase=True, remove_punctuation=True):
