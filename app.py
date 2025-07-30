@@ -7,7 +7,7 @@ tfidf = joblib.load("models/tfidf_vectorizer.joblib")
   
 
 
-st.title("IMDB Sentiment Classifier (Logistic Regression)")
+st.title("IMDB Sentiment Classifier (SVM with RBF Kernel)")
 st.markdown("Enter a movie review and the model will predict if it's **positive** or **negative**.")
 
 # Text input
